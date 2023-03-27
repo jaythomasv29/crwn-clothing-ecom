@@ -1,19 +1,14 @@
-import { getDoc } from 'firebase/firestore'
-import React from 'react'
+import SignInForm from '../../components/sign-in-form/sign-in-form.component'
 import SignUpForm from '../../components/sign-up-form/sign-up-form.component'
-import { signInWithGooglePopup, createUserDocumentFromAuth } from '../../utils/firebase.utils'
+
+
+import './auth.styles.scss'
 
 
 const Auth = () => {
-  const logGoogleUser = async () => {
-    const response = await signInWithGooglePopup()
-    const userDocRef = await createUserDocumentFromAuth(response.user)
-    const userSnapshot= await getDoc(userDocRef)
-    console.log(userSnapshot.data())
-  }
   return (
-    <div>Auth Page
-      <button onClick={logGoogleUser}>Sign in with Google</button>
+    <div className="auth-container">
+      <SignInForm />
       <SignUpForm />
     </div>
   )
