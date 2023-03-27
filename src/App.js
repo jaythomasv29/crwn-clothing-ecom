@@ -1,43 +1,31 @@
+import Home from "./pages/Home/home.component";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Shop from "./pages/Shop/shop.component";
+import Navbar from "./components/navbar/navbar.component";
+import Auth from "./pages/Auth/auth.component";
+
 const App = () => {
-  return (
-    <div className='categories-container'>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Hats</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Jackets</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Sneakers</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Womens</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Mens</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-    </div>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Navbar />,
+      children: [
+        {
+          path: "/",
+          element: <Home />
+        },
+        {
+          path: "/shop",
+          element: <Shop />
+        },
+        {
+          path: "/auth",
+          element: <Auth />
+        }
+      ]
+    },
+  ]);
+  return <RouterProvider router={router} />
 };
 
 export default App;

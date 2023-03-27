@@ -7,6 +7,7 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  //signInWithRedirect,
   signInWithPopup,
   signOut,
   onAuthStateChanged,
@@ -14,15 +15,15 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBcGGdSaEXHddSPqkite4uMGGH-Wwnyd94",
-  authDomain: "crown-db-d5539.firebaseapp.com",
-  projectId: "crown-db-d5539",
-  storageBucket: "crown-db-d5539.appspot.com",
-  messagingSenderId: "95630543226",
-  appId: "1:95630543226:web:d2c70dad74028fbf13aec3",
+  apiKey: "AIzaSyDPJ36Ppnwrvk4ZSNr9BCOU2-V_2-aGJZI",
+  authDomain: "inspire-athletics.firebaseapp.com",
+  projectId: "inspire-athletics",
+  storageBucket: "inspire-athletics.appspot.com",
+  messagingSenderId: "344956038295",
+  appId: "1:344956038295:web:7b288b18bd55560ac24dd2"
 };
 
-// Initialize Firebase app
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 // Initialize Firestore database
@@ -64,10 +65,10 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
 
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
   if(!userAuth) return;
-  const userDocRef = doc(db, "users", userAuth.uid);
-  const userSnapshot = await getDoc(userDocRef);
-  console.log(userSnapshot.data());
-  console.log('userAuth', userAuth)
+  const userDocRef = doc(db, "users", userAuth.uid);  // gets the actual document inside the collection
+  const userSnapshot = await getDoc(userDocRef);  // gets the data inside the document, aka the "snapshot"
+  // console.log(userSnapshot.data());
+  // console.log('userAuth', userAuth)
   // await setDoc(userSnapshot, data);
 
   if(!userSnapshot.exists()){
