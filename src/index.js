@@ -4,14 +4,17 @@ import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { UserProvider } from "./contexts/user.context";
-import { ProductsProvider } from "./contexts/products.context"
+import { ProductsProvider } from "./contexts/products.context";
+import { CartProvider } from "./contexts/cart.context";
 
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
-      <ProductsProvider>
-        <App />
-      </ProductsProvider>
+      <CartProvider>
+        <ProductsProvider>
+          <App />
+        </ProductsProvider>
+      </CartProvider>
     </UserProvider>
   </React.StrictMode>,
   document.getElementById("root")
