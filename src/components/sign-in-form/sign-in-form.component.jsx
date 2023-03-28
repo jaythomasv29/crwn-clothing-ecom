@@ -15,8 +15,7 @@ const SignInForm = () => {
   const { email, password } = formFields;
 
   const signInWithGoogle = async () => {
-    const response = await signInWithGooglePopup()
-    await createUserDocumentFromAuth(response.user)
+    await signInWithGooglePopup()
   }
 
   const handleInputChange = (e) => {
@@ -25,26 +24,27 @@ const SignInForm = () => {
       ...formFields,
       [name]: value
     })
-
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await signInAuthUserWithEmailAndPassword(email, password)
-      console.log(response)
+      // setCurrentUser(response.user)
 
     } catch (err) {
       switch (err.code) {
         case "auth/wrong-password":
-          alert("Credentials do not match. Incorrect email/password")
+          alert("Credentials do not match. Incorrect email/password");
           break;
         case "auth/user-not-found":
-          alert("User not found. Please register")
+          alert("User not found. Please register");
           break;
         default:
           console.log(err);
       }
+    } finally {
+      setFormFields(defaultFormFields);
     }
   }
 

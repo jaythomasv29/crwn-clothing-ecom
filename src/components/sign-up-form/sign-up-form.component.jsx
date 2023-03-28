@@ -12,8 +12,8 @@ const defaultFormFields = {
   confirmPassword: ""
 }
 const SignUpForm = () => {
-  const [formFields, setFormFields] = useState(defaultFormFields)
-  const { name, email, password, confirmPassword } = formFields
+  const [formFields, setFormFields] = useState(defaultFormFields);
+  const { name, email, password, confirmPassword } = formFields;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -31,8 +31,7 @@ const SignUpForm = () => {
     };
     try {
       const response = await createAuthUserWithEmailAndPassword(email, password);
-      const user = await createUserDocumentFromAuth(response.user, { displayName: name })
-      console.log(user)
+      await createUserDocumentFromAuth(response.user, { displayName: name })
 
     } catch (err) {
       if (err.code === "auth/email-already-in-use") {
@@ -50,10 +49,10 @@ const SignUpForm = () => {
       <h2>Don't have an account?</h2>
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmitUserEmailAndPassword}>
-       <FormInput label="Name" onChange={handleInputChange} type="text" required name="name" value={name}/>
+        <FormInput label="Name" onChange={handleInputChange} type="text" required name="name" value={name} />
 
         <FormInput label="Email" onChange={handleInputChange} type="email" required name="email" value={email} />
-        
+
 
         <FormInput label="Password" onChange={handleInputChange} type="password" required name="password" value={password} />
 
