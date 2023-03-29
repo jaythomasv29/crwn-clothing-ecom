@@ -4,9 +4,9 @@ import { CartContext } from "../../contexts/cart.context"
 import { useContext } from "react";
 const ProductCard = ({ product }) => {
 
-  const addProductToCart = () => addCartItem(product)
+  const addProductToCart = () => addToCart(product)
   const { name, price, imageUrl } = product;
-  const { addCartItem } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
   return (
     <div className="product-card-container">
       <img src={imageUrl} alt={name} />

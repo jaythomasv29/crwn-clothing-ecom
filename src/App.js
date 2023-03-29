@@ -1,8 +1,9 @@
-import Home from "./pages/Home/home.component";
+import Home from "./pages/home/home.component";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Shop from "./pages/Shop/shop.component";
+import Shop from "./pages/shop/shop.component";
 import Navbar from "./components/navbar/navbar.component";
-import Auth from "./pages/Auth/auth.component";
+import Auth from "./pages/auth/auth.component";
+import Checkout from "./pages/checkout/checkout.component";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const App = () => {
         {
           path: "/auth",
           element: <Auth />
+        },
+        {
+          path: "/checkout",
+          element: <Checkout />
         }
       ]
     },
