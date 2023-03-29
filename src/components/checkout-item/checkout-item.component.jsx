@@ -8,6 +8,10 @@ import "./checkout-item.styles.scss"
 const CheckoutItem = ({ cartItem }) => {
   const { addToCart, decreaseItemInCart, clearItemsFromCart } = useContext(CartContext)
   const { id, name, imageUrl, price, quantity } = cartItem
+
+  const addItemHandler = () => addToCart(cartItem)
+  const removeItemHandler = () => decreaseItemInCart(cartItem)
+  const clearItemHandler = () => clearItemsFromCart(cartItem)
   return (
     <div className="checkout-item-container">
       <div className="image-container">
@@ -15,13 +19,13 @@ const CheckoutItem = ({ cartItem }) => {
       </div>
       <span className="name">{name}</span>
       <div className="quantity">
-        <AiOutlineMinusCircle onClick={() => decreaseItemInCart(cartItem)} />
+        <AiOutlineMinusCircle onClick={removeItemHandler} />
         <span>{quantity}</span>
-        <BsPlusCircle onClick={() => addToCart(cartItem)} />
+        <BsPlusCircle onClick={addItemHandler} />
       </div>
       <span className="price">${price}</span>
       <span className="product-total">${price * quantity}</span>
-      <div className="remove-button"><MdOutlineClear onClick={() => clearItemsFromCart(cartItem)} /></div>
+      <div className="remove-button"><MdOutlineClear onClick={clearItemHandler} /></div>
     </div>
   )
 }
