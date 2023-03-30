@@ -3,14 +3,14 @@ import CategoryMenu from '../../components/category-menu/category-menu.component
 import { getCategoriesAndDocuments } from '../../utils/firebase.utils'
 
 const Home = () => {
-  useEffect(() => {
-    const getShoppingCategories = async () => {
-      const categories = await getCategoriesAndDocuments()
-      console.log(categories)
+  // useEffect(() => {
+  //   const getShoppingCategories = async () => {
+  //     const categories = await getCategoriesAndDocuments()
+  //     console.log(categories)
 
-    }
-    getShoppingCategories()
-  }, []);
+  //   }
+  //   getShoppingCategories()
+  // }, []);
   return (
     <>
     <CategoryMenu />
