@@ -9,7 +9,7 @@ const addProductToCart = (cartItems, product) => {
   return [...cartItems, { ...product, quantity: 1 }];
 }
   const decrementProductCount = (cartItems, product) => {
-    const existingCartItem = cartItems.find(item => item.id == product.id)
+    const existingCartItem = cartItems.find(item => item.id === product.id)
     if(existingCartItem.quantity > 1) {
       // decrease the quantity by 1
       const cartWithDecreasedQuantity = cartItems.map(cartItem => cartItem.id === product.id ? { ...cartItem, quantity: cartItem.quantity - 1 } : cartItem)
