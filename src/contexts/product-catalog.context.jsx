@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from 'react'
 import { getProductsCatalog } from '../utils/firebase.utils';
 
 // import { SHOP_DATA } from '../shop-data.js'
-// import { addCollectionAndDocuments, modifyProductIDInEachCategory, getProductsCategories } from '../utils/firebase.utils.js'
+import { getProductsCategories } from '../utils/firebase.utils.js'
 
 export const ProductsCatalogContext = createContext({
   catalogMap: {},
