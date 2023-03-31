@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom"
 import { BackgroundImage, DirectoryBodyContainer, DirectoryContainer, DirectoryLink } from "./directory-item.styles"
-// import "./directory-item.styles.scss"
 
 const Directory = ({ category }) => {
   const { title, imageUrl } = category

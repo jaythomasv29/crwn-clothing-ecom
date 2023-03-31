@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { BsArrowRight } from 'react-icons/bs'
 import { Carousel } from 'react-responsive-carousel'
 import CategoryMenu from '../../components/category-menu/category-menu.component'
-import { getCategoriesAndDocuments } from '../../utils/firebase.utils'
+// import { getCategoriesAndDocuments } from '../../utils/firebase.utils'
 
 import "./home.styles.scss"
 import { Link } from 'react-router-dom';

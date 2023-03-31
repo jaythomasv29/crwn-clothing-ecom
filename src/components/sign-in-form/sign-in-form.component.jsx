@@ -1,4 +1,3 @@
-import { getDoc } from 'firebase/firestore';
 import React, { useState } from 'react'
 import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword } from '../../utils/firebase.utils'
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
@@ -29,7 +28,7 @@ const SignInForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await signInAuthUserWithEmailAndPassword(email, password)
+      await signInAuthUserWithEmailAndPassword(email, password)
       // setCurrentUser(response.user)
 
     } catch (err) {

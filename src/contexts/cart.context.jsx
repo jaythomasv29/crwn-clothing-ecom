@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 
 const addProductToCart = (cartItems, product) => {
-  const existingCartItem = cartItems.find(item => item.id == product.id)
+  const existingCartItem = cartItems.find(item => item.id === product.id)
   if (existingCartItem) {
     const cartWithIncreasedQuantity = cartItems.map(cartItem => cartItem.id === product.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem)
     return cartWithIncreasedQuantity;

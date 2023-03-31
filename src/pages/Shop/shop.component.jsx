@@ -1,7 +1,6 @@
-import React, { Fragment, useContext, useEffect } from 'react'
+import React, { Fragment, useContext } from 'react'
 import CategoryPreview from '../../components/category-preview/category-preview.component'
-import ProductCard from '../../components/product-card/product-card.component'
-import { CartContext } from '../../contexts/cart.context'
+
 import { ProductsCatalogContext } from '../../contexts/product-catalog.context'
 import "./shop.styles.scss"
 const Shop = () => {
