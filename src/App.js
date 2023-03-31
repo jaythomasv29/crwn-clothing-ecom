@@ -4,6 +4,7 @@ import Shop from "./pages/shop/shop.component";
 import Navbar from "./components/navbar/navbar.component";
 import Auth from "./pages/auth/auth.component";
 import Checkout from "./pages/checkout/checkout.component";
+import Category from "./pages/category/category.component";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -13,24 +14,28 @@ const App = () => {
       children: [
         {
           path: "/",
-          element: <Home />
+          element: <Home />,
         },
         {
           path: "/shop",
-          element: <Shop />
+          element: <Shop />,
+        },
+        {
+          path: "/shop/:category",
+          element: <Category />,
         },
         {
           path: "/auth",
-          element: <Auth />
+          element: <Auth />,
         },
         {
           path: "/checkout",
-          element: <Checkout />
-        }
-      ]
+          element: <Checkout />,
+        },
+      ],
     },
   ]);
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 };
 
 export default App;

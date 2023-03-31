@@ -1,5 +1,5 @@
 
-.category-container {
+.directory-container {
   min-width: 30%;
   height: 240px;
   flex: 1 1 auto;
@@ -11,14 +11,14 @@
   overflow: hidden;
 
   &:hover {
-    cursor: pointer;
+    
 
     & .background-image {
       transform: scale(1.1);
       transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     }
 
-    & .category-body-container {
+    & .directory-body-container {
       opacity: 0.9;
     }
   }
@@ -42,7 +42,8 @@
     background-position: center;
   }
 
-  .category-body-container {
+  .directory-body-container {
+    cursor: pointer;
     height: 90px;
     padding: 0 25px;
     display: flex;
@@ -53,6 +54,13 @@
     background-color: white;
     opacity: 0.7;
     position: absolute;
+
+    .directory-link {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
     h2 {
       font-weight: bold;

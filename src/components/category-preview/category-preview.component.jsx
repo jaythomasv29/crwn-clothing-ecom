@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import ProductCard from '../product-card/product-card.component'
-import "./category-preview.styles.scss"
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai"
+import { Link } from 'react-router-dom';
+
+import "./category-preview.styles.scss"
+
 const PER_PAGE = 4;
 const CategoryPreview = ({ title, products }) => {
   const [currentStart, setCurrentStart] = useState(0)
@@ -20,7 +23,8 @@ const CategoryPreview = ({ title, products }) => {
   return (
     <div className="category-preview-container">
       <h2>
-        <span className="title">{title}</span></h2>
+       <Link to={`${title.toLowerCase()}`}><span className="title">{title.toUpperCase()}</span></Link> 
+       </h2>
       <div className="preview-wrapper">
 
         <div className='preview-control-left'>

@@ -7,38 +7,44 @@ import { signOutUser } from '../../utils/firebase.utils'
 import CartDropdown from '../cart-dropdown/cart-dropdown.component'
 import CartIcon from '../cart-icon/cart-icon.component'
 
-import "./navbar.styles.scss"
+// import "./navbar.styles.js"
+import { LogoContainer, NavigationContainer, NavLink, NavLinksContainer, AppContainer } from './navbar.styles.js'
 const Navbar = () => {
   const { currentUser } = useContext(UserContext)
   const { isCartVisible, toggleCartVisible } = useContext(CartContext)
   console.log(isCartVisible);
   return (
     <>
-      <div className="navigation">
-        <Link className="logo-container" to="/">
+      <NavigationContainer>
+        <LogoContainer to="/">
           <BrandLogo className="logo" />
-        </Link>
-        <div className="nav-links-container">
-          <Link className="nav-link" to="/shop">SHOP</Link>
+        </LogoContainer>
+
+        <NavLinksContainer>
+          <NavLink to="/">HOME</NavLink>
+          <NavLink to="/shop">SHOP</NavLink>
           {
             currentUser ?
 
-              <Link onClick={signOutUser} className="nav-link" to="/auth">SIGN OUT</Link>
+              <NavLink as="span" onClick={signOutUser} className="nav-link" to="/auth">SIGN OUT</NavLink>
               :
-              <Link className="nav-link" to="/auth">SIGN IN</Link>
+              <NavLink className="nav-link" to="/auth">SIGN IN</NavLink>
           }
           <div onClick={toggleCartVisible}>
             <CartIcon />
           </div>
-        </div>
-        {
-          isCartVisible &&
-          <CartDropdown />
-        }
-      </div>
-      <div className="app-container">
+
+          {
+            isCartVisible &&
+            <CartDropdown />
+          }
+
+        </NavLinksContainer>
+
+      </NavigationContainer>
+      <AppContainer>
         <Outlet />
-      </div>
+      </AppContainer>
     </>
   )
 }

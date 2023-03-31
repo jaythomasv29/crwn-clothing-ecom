@@ -10,7 +10,7 @@ const Shop = () => {
 
   return (
     <>
-      <h2 className="page-title">shop</h2>
+      {/* <h2 className="page-title">shop</h2> */}
 
       {
         Object.keys(catalogMap).map(category => {
