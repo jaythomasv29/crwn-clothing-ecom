@@ -1,6 +1,8 @@
 export const SHOP_DATA = [
   {
     title: 'Hats',
+    imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
+    route: "/shop/hats",
     items: [
       {
         id: 1,
@@ -60,6 +62,8 @@ export const SHOP_DATA = [
   },
   {
     title: 'Sneakers',
+    imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
+    route: "/shop/sneakers",
     items: [
       {
         id: 10,
@@ -113,6 +117,8 @@ export const SHOP_DATA = [
   },
   {
     title: 'Jackets',
+    imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
+    route: "/shop/jackets",
     items: [
       {
         id: 18,
@@ -148,6 +154,8 @@ export const SHOP_DATA = [
   },
   {
     title: 'Womens',
+    imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
+    route: "/shop/womens",
     items: [
       {
         id: 23,
@@ -195,6 +203,8 @@ export const SHOP_DATA = [
   },
   {
     title: 'Mens',
+    imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
+    route: "/shop/mens",
     items: [
       {
         id: 30,

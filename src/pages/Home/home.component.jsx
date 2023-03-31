@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { BsArrowRight } from 'react-icons/bs'
 import { Carousel } from 'react-responsive-carousel'
@@ -7,35 +7,14 @@ import { getCategoriesAndDocuments } from '../../utils/firebase.utils'
 
 import "./home.styles.scss"
 import { Link } from 'react-router-dom';
+import { ProductsCatalogContext } from '../../contexts/product-catalog.context';
 
 const Home = () => {
-  const categories = [
-    {
-      id: 1,
-      title: "hats",
-      imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
-    },
-    {
-      id: 2,
-      title: "jackets",
-      imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
-    },
-    {
-      id: 3,
-      title: "sneakers",
-      imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
-    },
-    {
-      id: 4,
-      title: "womens",
-      imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
-    },
-    {
-      id: 5,
-      title: "mens",
-      imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
-    },
-  ];
+
+  const { categories } = useContext(ProductsCatalogContext)
+
+  console.log(categories)
+  
   // useEffect(() => {
   //   const getShoppingCategories = async () => {
   //     const categories = await getCategoriesAndDocuments()
@@ -58,7 +37,7 @@ const Home = () => {
     <div className="home-container">
       <Carousel {...carouselSettings} className="carousel-container">
         {
-          categories.map(category => (
+          categories?.map(category => (
             <div key={category.id} className="slider-container">
               <div className="slider-image-container">
                 <img className="slider-image" src={category.imageUrl} alt={category.title} />

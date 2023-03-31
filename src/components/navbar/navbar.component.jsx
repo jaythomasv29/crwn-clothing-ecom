@@ -8,16 +8,17 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component'
 import CartIcon from '../cart-icon/cart-icon.component'
 
 // import "./navbar.styles.js"
-import { LogoContainer, NavigationContainer, NavLink, NavLinksContainer, AppContainer } from './navbar.styles.js'
+import { LogoContainer, NavigationContainer, NavLink, NavLinksContainer, AppContainer, BrandName } from './navbar.styles.js'
 const Navbar = () => {
   const { currentUser } = useContext(UserContext)
   const { isCartVisible, toggleCartVisible } = useContext(CartContext)
-  console.log(isCartVisible);
+  
   return (
     <>
       <NavigationContainer>
         <LogoContainer to="/">
-          <BrandLogo className="logo" />
+          <BrandLogo />
+          <BrandName>CRWN</BrandName>
         </LogoContainer>
 
         <NavLinksContainer>
@@ -26,9 +27,9 @@ const Navbar = () => {
           {
             currentUser ?
 
-              <NavLink as="span" onClick={signOutUser} className="nav-link" to="/auth">SIGN OUT</NavLink>
+              <NavLink as="span" onClick={signOutUser} to="/auth">SIGN OUT</NavLink>
               :
-              <NavLink className="nav-link" to="/auth">SIGN IN</NavLink>
+              <NavLink to="/auth">SIGN IN</NavLink>
           }
           <div onClick={toggleCartVisible}>
             <CartIcon />

@@ -17,6 +17,10 @@ export const LogoContainer = styled(Link)`
   padding: 25px;
 `;
 
+export const BrandName = styled.span`
+  margin-left: 5px;
+`
+
 export const NavLinksContainer = styled.div`
   width: 50%;
   height: 100%;

@@ -1,8 +1,11 @@
+import { useContext } from "react";
+import { ProductsCatalogContext } from "../../contexts/product-catalog.context";
 import DirectoryItem from "../directory-item/directory-item.component";
 import "./category-menu-styles.scss"
 
 const CategoryMenu = ()=> {
-  const categories = [
+  const { categories } = useContext(ProductsCatalogContext)
+  const categories2 = [
     {
       id: 1,
       title: "hats",

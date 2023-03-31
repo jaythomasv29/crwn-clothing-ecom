@@ -6,7 +6,6 @@ import { ProductsCatalogContext } from '../../contexts/product-catalog.context'
 import "./shop.styles.scss"
 const Shop = () => {
   const { catalogMap } = useContext(ProductsCatalogContext)
-  console.log(catalogMap)
 
   return (
     <>

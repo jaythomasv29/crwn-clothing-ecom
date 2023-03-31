@@ -62,7 +62,7 @@ export const addCollectionAndDocuments = async (
     batch.set(docRef, object);
   });
   await batch.commit();
-  console.log("done adding collection");
+  console.log("done batch adding collection");
 };
 
 // export const getCategoriesAndDocuments = async () => {
@@ -92,6 +92,19 @@ export const getProductsCatalog = async () => {
     return acc;
   }, {});
   return catalog;
+};
+
+export const getProductsCategories = async () => {
+  const collectionRef = collection(db, "categories");
+  const q = query(collectionRef);
+  const querySnapshot = await getDocs(q);
+  const categories = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, imageUrl, route,  } = docSnapshot.data();
+  //  acc[title.toLowerCase()] = title; 
+    
+    return [...acc, {id: uuid(), title, imageUrl, route}]
+  }, []);
+  return categories;
 };
 
 // new google auth instance

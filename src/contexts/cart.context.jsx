@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 
 const addProductToCart = (cartItems, product) => {
-  console.log({ product })
   const existingCartItem = cartItems.find(item => item.id == product.id)
   if (existingCartItem) {
     const cartWithIncreasedQuantity = cartItems.map(cartItem => cartItem.id === product.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem)
@@ -47,7 +46,6 @@ export const CartProvider = ({ children }) => {
   }, [cartItems])
 
   const [isCartVisible, setIsCartVisible] = useState(false);
-  console.log(cartItems, cartCount)
 
   const toggleCartVisible = () => setIsCartVisible(!isCartVisible)
   
