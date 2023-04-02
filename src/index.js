@@ -4,16 +4,16 @@ import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { UserProvider } from "./contexts/user.context";
-import { ProductsCatalogProvider } from "./contexts/product-catalog.context";
+import { ProductCatalogProvider } from "./contexts/product-catalog.context";
 import { CartProvider } from "./contexts/cart.context";
 
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
       <CartProvider>
-        <ProductsCatalogProvider>
+        <ProductCatalogProvider>
           <App />
-        </ProductsCatalogProvider>
+        </ProductCatalogProvider>
       </CartProvider>
     </UserProvider>
   </React.StrictMode>,

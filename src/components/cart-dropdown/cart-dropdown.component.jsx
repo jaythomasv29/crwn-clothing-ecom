@@ -9,11 +9,11 @@ import { CartDropdownContainer, CartItemsContainer, CartTotal, EmptyMessage } fr
 
 const CartDropdown = () => {
   const navigate = useNavigate();
-  const { cartItems, toggleCartVisible, cartTotal } = useContext(CartContext);
+  const { cartItems, toggleCartVisible, cartTotal, isCartVisible } = useContext(CartContext);
 
   const handleButtonClick = () => {
     navigate("/checkout")
-    toggleCartVisible()
+    toggleCartVisible(isCartVisible)
 
   }
   return (

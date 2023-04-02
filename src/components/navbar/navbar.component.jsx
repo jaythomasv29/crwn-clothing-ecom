@@ -12,7 +12,9 @@ import { LogoContainer, NavigationContainer, NavLink, NavLinksContainer, AppCont
 const Navbar = () => {
   const { currentUser } = useContext(UserContext)
   const { isCartVisible, toggleCartVisible } = useContext(CartContext)
-  
+   const onToggleCartVisible = () => {
+    toggleCartVisible(isCartVisible)
+   }
   return (
     <>
       <NavigationContainer>
@@ -31,7 +33,7 @@ const Navbar = () => {
               :
               <NavLink to="/auth">SIGN IN</NavLink>
           }
-          <div onClick={toggleCartVisible}>
+          <div onClick={onToggleCartVisible}>
             <CartIcon />
           </div>
 

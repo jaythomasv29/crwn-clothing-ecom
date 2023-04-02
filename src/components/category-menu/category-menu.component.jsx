@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { ProductsCatalogContext } from "../../contexts/product-catalog.context";
+import { ProductCatalogContext } from "../../contexts/product-catalog.context";
 import DirectoryItem from "../directory-item/directory-item.component";
 import "./category-menu-styles.scss"
 
 const CategoryMenu = ()=> {
-  const { categories } = useContext(ProductsCatalogContext)
+  const { categories } = useContext(ProductCatalogContext)
  
   return (
 <div className="categories-container">

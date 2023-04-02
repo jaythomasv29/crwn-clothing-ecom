@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ProductCard from '../../components/product-card/product-card.component'
-import { ProductsCatalogContext } from '../../contexts/product-catalog.context'
+import { ProductCatalogContext } from '../../contexts/product-catalog.context'
 
 import "./category.styles.scss"
 const Category = () => {
   const { category } = useParams()
-  const { catalogMap } = useContext(ProductsCatalogContext)
+  const { catalogMap } = useContext(ProductCatalogContext)
   const [categoryProducts, setCategoryProducts] = useState([])
 
   useEffect(() => {

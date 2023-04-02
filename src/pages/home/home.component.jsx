@@ -7,11 +7,11 @@ import CategoryMenu from '../../components/category-menu/category-menu.component
 
 import "./home.styles.scss"
 import { Link } from 'react-router-dom';
-import { ProductsCatalogContext } from '../../contexts/product-catalog.context';
+import { ProductCatalogContext } from '../../contexts/product-catalog.context';
 
 const Home = () => {
 
-  const { categories } = useContext(ProductsCatalogContext)
+  const { categories } = useContext(ProductCatalogContext)
 
   console.log(categories)
   
