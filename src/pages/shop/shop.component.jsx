@@ -1,24 +1,30 @@
-import React, { Fragment, useContext} from 'react'
+import React, { Fragment, useContext } from 'react'
 import CategoryPreview from '../../components/category-preview/category-preview.component'
 
-import { ProductCatalogContext } from '../../contexts/product-catalog.context'
+import { motion } from "framer-motion"
 import "./shop.styles.scss"
+import { useSelector } from 'react-redux'
+import { selectCatalogMap } from '../../store/product-catalog/product-catalog.selector'
 const Shop = () => {
-  const { catalogMap } = useContext(ProductCatalogContext)
-
+  // const { catalogMap } = useContext(ProductCatalogContext)
+  const catalogMap = useSelector(selectCatalogMap)
+  
   return (
-    <>
-      {/* <h2 className="page-title">shop</h2> */}
+    Object.keys(catalogMap).length ?
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="shop-category-container">
 
-      {
-        Object.keys(catalogMap).map(category => {
-          return <Fragment key={category}>
-            <CategoryPreview title={category} products={catalogMap[category]} />
-          </ Fragment>
-        })
-      }
+        {
+          Object.keys(catalogMap).map(category => {
+            return <Fragment key={category}>
+              <CategoryPreview title={category} products={catalogMap[category]} />
+            </ Fragment>
+          })
+        }
 
-    </>
+      </motion.div>
+      :
+      <></>
+
   )
 }
 

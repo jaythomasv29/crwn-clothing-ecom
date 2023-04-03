@@ -64,7 +64,6 @@ export const ProductCatalogProvider = ({ children }) => {
   useEffect(() => {
     getProductsCatalog()
       .then(data => {
-        console.log(data)
         setProductCatalog(data)
       })
   }, [])

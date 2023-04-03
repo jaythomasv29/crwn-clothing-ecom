@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 import { CartContext } from '../../contexts/cart.context'
+import { motion } from "framer-motion"
 
 import "./checkout.styles.scss"
 
@@ -8,7 +9,7 @@ const Checkout = () => {
   const { cartItems, cartTotal } = useContext(CartContext);
   
   return (
-    <div>Checkout
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>Checkout
       <div className="checkout-container">
         <div className="checkout-header">
           <div className="header-block">
@@ -37,7 +38,7 @@ const Checkout = () => {
         }
         <span className="total">Total: ${cartTotal}</span>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
