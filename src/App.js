@@ -8,7 +8,6 @@ import Category from "./pages/category/category.component";
 import { useEffect } from "react";
 import {
   createUserDocumentFromAuth,
-  getProductsCatalog,
   getProductsCategories,
   onAuthStateChangedListener,
 } from "./utils/firebase.utils";
@@ -18,17 +17,17 @@ import { useDispatch } from "react-redux";
 import { AnimatePresence } from "framer-motion";
 import {
   setCategories,
-  setProductCatalog,
 } from "./store/product-catalog/product-catalog.action";
 
 const App = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    getProductsCatalog().then((data) => {
-      dispatch(setProductCatalog(data));
-    });
-  });
+  // useEffect(() => {
+  //   getProductsCatalog().then((categories) => {
+  //     console.log(categories)
+  //     // dispatch(setProductCatalog(data));
+  //   });
+  // });
 
   useEffect(() => {
     getProductsCategories().then((categories) => {

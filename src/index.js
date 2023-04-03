@@ -4,20 +4,13 @@ import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 // import { UserProvider } from "./contexts/user.context";
-import { ProductCatalogProvider } from "./contexts/product-catalog.context";
-import { CartProvider } from "./contexts/cart.context";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
-
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <CartProvider>
-        <ProductCatalogProvider>
-          <App />
-        </ProductCatalogProvider>
-      </CartProvider>
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

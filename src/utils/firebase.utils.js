@@ -82,19 +82,21 @@ export const addCollectionAndDocuments = async (
  *
  * */
 
-export const getProductsCatalog = async () => {
+export const getProductsCategories = async () => {
   const collectionRef = collection(db, "categories");
   const q = query(collectionRef);
   const querySnapshot = await getDocs(q);
-  const catalog = querySnapshot.docs.reduce((acc, docSnapshot) => {
-    const { title, items } = docSnapshot.data();
-    acc[title.toLowerCase()] = items;
-    return acc;
-  }, {});
-  return catalog;
+  // return the documents within the collection from firebase
+  return querySnapshot.docs.map(docSnapshot => docSnapshot.data())
+  // const catalog = querySnapshot.docs.reduce((acc, docSnapshot) => {
+  //   const { title, items } = docSnapshot.data();
+  //   acc[title.toLowerCase()] = items;
+  //   return acc;
+  // }, {});
+  // return catalog;
 };
 
-export const getProductsCategories = async () => {
+export const getProductsCategories2 = async () => {
   const collectionRef = collection(db, "categories");
   const q = query(collectionRef);
   const querySnapshot = await getDocs(q);

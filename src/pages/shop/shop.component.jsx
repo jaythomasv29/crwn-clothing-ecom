@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment } from 'react'
 import CategoryPreview from '../../components/category-preview/category-preview.component'
 
 import { motion } from "framer-motion"
@@ -6,7 +6,6 @@ import "./shop.styles.scss"
 import { useSelector } from 'react-redux'
 import { selectCatalogMap } from '../../store/product-catalog/product-catalog.selector'
 const Shop = () => {
-  // const { catalogMap } = useContext(ProductCatalogContext)
   const catalogMap = useSelector(selectCatalogMap)
   
   return (

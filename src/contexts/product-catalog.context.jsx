@@ -1,5 +1,5 @@
-import { createContext, useEffect, useReducer, useState } from 'react'
-import { getProductsCatalog } from '../utils/firebase.utils';
+import { createContext, useEffect, useReducer } from 'react'
+// import { getProductsCatalog } from '../utils/firebase.utils';
 
 // import { SHOP_DATA } from '../shop-data.js'
 import { getProductsCategories } from '../utils/firebase.utils.js'
@@ -41,9 +41,9 @@ export const ProductCatalogProvider = ({ children }) => {
     dispatch(createAction(PRODUCT_CATALOG_ACTION_TYPES.GET_CATEGORIES, categories))
   }
 
-  const setProductCatalog = (productCatalogMap) => {
-    dispatch(createAction(PRODUCT_CATALOG_ACTION_TYPES.GET_CATALOG_MAP, productCatalogMap))
-  }
+  // const setProductCatalog = (productCatalogMap) => {
+  //   dispatch(createAction(PRODUCT_CATALOG_ACTION_TYPES.GET_CATALOG_MAP, productCatalogMap))
+  // }
 
 
   // const [catalogMap, setCatalogMap] = useState([]);
@@ -62,10 +62,10 @@ export const ProductCatalogProvider = ({ children }) => {
    * Get products in form of a catalog in their respective categories from firebase db
    */
   useEffect(() => {
-    getProductsCatalog()
-      .then(data => {
-        setProductCatalog(data)
-      })
+    // getProductsCatalog()
+    //   .then(data => {
+    //     setProductCatalog(data)
+    //   })
   }, [])
 
   useEffect(() => {

@@ -1,22 +1,25 @@
-import React, { useContext } from 'react'
 import { Outlet } from 'react-router-dom'
 import { ReactComponent as BrandLogo } from "../../assets/crown.svg"
-import { CartContext } from "../../contexts/cart.context"
+// import { CartContext } from "../../contexts/cart.context"
 import { signOutUser } from '../../utils/firebase.utils'
 import CartDropdown from '../cart-dropdown/cart-dropdown.component'
 import CartIcon from '../cart-icon/cart-icon.component'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 // import "./navbar.styles.js"
 import { LogoContainer, NavigationContainer, NavLink, NavLinksContainer, AppContainer, BrandName } from './navbar.styles.js'
 import { selectCurrentUser } from '../../store/user/user.selector'
+import { selectCartVisible } from '../../store/cart/cart.selector'
+import { toggleCartVisible } from '../../store/cart/cart.action'
 
 const Navbar = () => {
-  const currentUser = useSelector(selectCurrentUser);
+  const dispatch = useDispatch()
 
-  const { isCartVisible, toggleCartVisible } = useContext(CartContext)
+  const currentUser = useSelector(selectCurrentUser);
+  const isCartVisible = useSelector(selectCartVisible)
+  
    const onToggleCartVisible = () => {
-    toggleCartVisible(isCartVisible)
+    dispatch(toggleCartVisible())
    }
   return (
     <>

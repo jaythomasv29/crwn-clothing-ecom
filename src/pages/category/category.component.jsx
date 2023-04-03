@@ -11,22 +11,23 @@ const Category = () => {
   const catalogMap = useSelector(selectCatalogMap)
   const [categoryProducts, setCategoryProducts] = useState([])
 
+
   useEffect(() => {
     setCategoryProducts(catalogMap[category])
   }, [category, catalogMap])
   return (
     categoryProducts?.length ?
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} >
-      <h2>{category}</h2>
-      <div className="category-products-container">
-        {
-          categoryProducts?.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-      </div>
-    </motion.div>
-    :
-    <></>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} >
+        <h2>{category}</h2>
+        <div className="category-products-container">
+          {
+            categoryProducts?.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+        </div>
+      </motion.div>
+      :
+      <></>
   )
 }
 
