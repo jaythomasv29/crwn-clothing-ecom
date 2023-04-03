@@ -43,7 +43,7 @@ const categories = useSelector(selectCategories)
                 <img className="slider-image" src={category.imageUrl} alt={category.title} />
               </div>
               <div className='legend-container'>
-                <Link to={`/shop/${category.title}`}>
+                <Link to={`/shop/${category.title.toLowerCase()}`}>
 
                   <p className='legend'>{category.title} <BsArrowRight /></p>
                 </Link>
