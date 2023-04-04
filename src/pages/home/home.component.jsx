@@ -6,12 +6,14 @@ import CategoryMenu from '../../components/category-menu/category-menu.component
 
 import "./home.styles.scss"
 import { Link } from 'react-router-dom';
-import {motion } from "framer-motion"
+import { motion } from "framer-motion"
 import { useSelector } from 'react-redux';
-import { selectCategories } from '../../store/product-catalog/product-catalog.selector';
+import { selectCategories, selectCategoriesLoading } from '../../store/product-catalog/product-catalog.selector';
+import Spinner from '../../components/spinner/spinner.component';
 const Home = () => {
-const categories = useSelector(selectCategories)
- 
+  const isCategoriesLoading = useSelector(selectCategoriesLoading)
+  const categories = useSelector(selectCategories)
+
   const carouselSettings = {
     showArrows: false,
     dynamicHeight: false,
@@ -22,33 +24,31 @@ const categories = useSelector(selectCategories)
     width: "98.7%",
   }
   return (
+    isCategoriesLoading ?
+      <Spinner /> :
+      (<motion.div className="home-container" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+        <Carousel {...carouselSettings} className="carousel-container">
+          {
+            categories?.map(category => (
+              <div key={category.route} className="slider-container">
+                <div className="slider-image-container">
+                  <img className="slider-image" src={category.imageUrl} alt={category.title} />
+                </div>
+                <div className='legend-container'>
+                  <Link to={`/shop/${category.title.toLowerCase()}`}>
 
-  categories.length ?
-    (<motion.div className="home-container" initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
-      <Carousel {...carouselSettings} className="carousel-container">
-        {
-          categories?.map(category => (
-            <div key={category.route} className="slider-container">
-              <div className="slider-image-container">
-                <img className="slider-image" src={category.imageUrl} alt={category.title} />
+                    <p className='legend'>{category.title} <BsArrowRight /></p>
+                  </Link>
+
+
+                </div>
               </div>
-              <div className='legend-container'>
-                <Link to={`/shop/${category.title.toLowerCase()}`}>
+            ))
+          }
+        </Carousel>
+        <CategoryMenu />
 
-                  <p className='legend'>{category.title} <BsArrowRight /></p>
-                </Link>
-
-
-              </div>
-            </div>
-          ))
-        }
-
-      </Carousel>
-      <CategoryMenu />
-
-    </motion.div>)
-    : <></>
+      </motion.div>)
   )
 }
 

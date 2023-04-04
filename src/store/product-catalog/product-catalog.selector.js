@@ -6,17 +6,26 @@ import { createSelector } from "reselect";
 const selectProductCatalogReducer = (state) => state.products;
 
 // Memoized selectors
-export const selectCategories = createSelector([selectProductCatalogReducer], (productCatalogSlice) => productCatalogSlice.categories);
+export const selectCategories = createSelector(
+  [selectProductCatalogReducer],
+  (productCatalogSlice) => productCatalogSlice.categories
+);
 
-export const selectCatalogMap = createSelector([selectProductCatalogReducer], (productCatalogSlice) => {
-  console.log("memoized selector fired")
-  return productCatalogSlice.categories.reduce((acc, categories) => {
-    const { title, items } = categories;
-    acc[title.toLowerCase()] = items;
-    return acc;
-  }, {});
-})
+export const selectCatalogMap = createSelector(
+  [selectProductCatalogReducer],
+  (productCatalogSlice) => {
+    return productCatalogSlice.categories.reduce((acc, categories) => {
+      const { title, items } = categories;
+      acc[title.toLowerCase()] = items;
+      return acc;
+    }, {});
+  }
+);
 
+export const selectCategoriesLoading = createSelector(
+  [selectProductCatalogReducer],
+  (productCatalogSlice) => productCatalogSlice.isLoading
+);
 
 // Before memoized selectors
 // export const selectCatalogMap2 = (state) => {

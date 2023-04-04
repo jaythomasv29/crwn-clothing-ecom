@@ -4,9 +4,13 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai"
 import { Link } from 'react-router-dom';
 
 import "./category-preview.styles.scss"
+import { useSelector } from 'react-redux';
+import { selectCategoriesLoading } from '../../store/product-catalog/product-catalog.selector';
+import Spinner from '../spinner/spinner.component';
 
 const PER_PAGE = 4;
 const CategoryPreview = ({ title, products }) => {
+  const isCategoriesLoading = useSelector(selectCategoriesLoading)
   const [currentStart, setCurrentStart] = useState(0)
   const [currentEnd, setCurrentEnd] = useState(PER_PAGE);
 
@@ -21,6 +25,9 @@ const CategoryPreview = ({ title, products }) => {
   }
 
   return (
+    isCategoriesLoading ? 
+    <Spinner />
+    :
     <div className="category-preview-container">
       <h2>
        <Link to={`/shop/${title.toLowerCase()}`}><span className="title">{title.toLowerCase()}</span></Link> 

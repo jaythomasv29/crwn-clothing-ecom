@@ -5,9 +5,11 @@ import { motion } from "framer-motion"
 
 import "./category.styles.scss"
 import { useSelector } from 'react-redux'
-import { selectCatalogMap } from '../../store/product-catalog/product-catalog.selector'
+import { selectCatalogMap, selectCategoriesLoading } from '../../store/product-catalog/product-catalog.selector'
+import Spinner from '../../components/spinner/spinner.component'
 const Category = () => {
   const { category } = useParams()
+  const isCategoriesLoading = useSelector(selectCategoriesLoading)
   const catalogMap = useSelector(selectCatalogMap)
   const [categoryProducts, setCategoryProducts] = useState([])
 
@@ -16,7 +18,9 @@ const Category = () => {
     setCategoryProducts(catalogMap[category])
   }, [category, catalogMap])
   return (
-    categoryProducts?.length ?
+    isCategoriesLoading ?
+      <Spinner />
+      :
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} >
         <h2>{category}</h2>
         <div className="category-products-container">
@@ -26,8 +30,8 @@ const Category = () => {
             ))}
         </div>
       </motion.div>
-      :
-      <></>
+
+
   )
 }
 

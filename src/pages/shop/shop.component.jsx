@@ -4,12 +4,16 @@ import CategoryPreview from '../../components/category-preview/category-preview.
 import { motion } from "framer-motion"
 import "./shop.styles.scss"
 import { useSelector } from 'react-redux'
-import { selectCatalogMap } from '../../store/product-catalog/product-catalog.selector'
+import { selectCatalogMap, selectCategoriesLoading } from '../../store/product-catalog/product-catalog.selector'
+import Spinner from '../../components/spinner/spinner.component'
 const Shop = () => {
+  const isLoading = useSelector(selectCategoriesLoading)
   const catalogMap = useSelector(selectCatalogMap)
-  
+
   return (
-    Object.keys(catalogMap).length ?
+    isLoading ?
+      <Spinner />
+      :
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="shop-category-container">
 
         {
@@ -21,8 +25,6 @@ const Shop = () => {
         }
 
       </motion.div>
-      :
-      <></>
 
   )
 }

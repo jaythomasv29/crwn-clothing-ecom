@@ -16,23 +16,15 @@ import { useDispatch } from "react-redux";
 
 import { AnimatePresence } from "framer-motion";
 import {
+  fetchCategoriesAsync,
   setCategories,
 } from "./store/product-catalog/product-catalog.action";
 
 const App = () => {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   getProductsCatalog().then((categories) => {
-  //     console.log(categories)
-  //     // dispatch(setProductCatalog(data));
-  //   });
-  // });
-
   useEffect(() => {
-    getProductsCategories().then((categories) => {
-      dispatch(setCategories(categories));
-    });
+    dispatch(fetchCategoriesAsync())
   });
 
   useEffect(() => {
