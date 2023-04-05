@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 import "./checkout.styles.scss"
 import { useSelector } from 'react-redux';
 import { selectCartItems, selectCartTotal } from '../../store/cart/cart.selector';
+import PaymentForm from '../../components/payment-form/payment-form.component';
 
 const Checkout = () => {
   const cartItems = useSelector(selectCartItems)
@@ -40,6 +41,7 @@ const Checkout = () => {
           ))
         }
         <span className="total">Total: ${cartTotal}</span>
+      <PaymentForm />
       </div>
     </motion.div>
   )

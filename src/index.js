@@ -6,13 +6,18 @@ import reportWebVitals from "./reportWebVitals";
 // import { UserProvider } from "./contexts/user.context";
 import { persistor, store } from "./store/store";
 import { Provider } from "react-redux";
-import {PersistGate } from "redux-persist/es/integration/react"
+import { PersistGate } from "redux-persist/es/integration/react";
+
+import { Elements } from "@stripe/react-stripe-js";
+import { stripePromise } from "./utils/stripe/stripe.utils";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-      <App />
+        <Elements stripe={stripePromise}>
+          <App />
+        </Elements>
       </PersistGate>
     </Provider>
   </React.StrictMode>,

@@ -15,7 +15,7 @@ const Home = () => {
   const categories = useSelector(selectCategories)
 
   const carouselSettings = {
-    showArrows: false,
+    showArrows: true,
     dynamicHeight: false,
     autoPlay: true,
     showThumbs: false,
