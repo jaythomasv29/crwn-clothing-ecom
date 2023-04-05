@@ -4,6 +4,10 @@
 CRWN is a clothing line ecommerce store built with React and a variety of other technologies to create a robust, performant, and user-friendly application.
 
 # Overview
+
+### Handling Stripe Payments
+* Here you can see successful tests of payments via the Stripe API using Checkout feature
+![stripe-payment](./src/assets/Stripe.png)
 ### Home Page
 ![home-page](./src/assets/Home.png)
 
