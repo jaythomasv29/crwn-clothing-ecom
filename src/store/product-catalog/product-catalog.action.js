@@ -16,6 +16,7 @@ export const fetchCategoriesSuccess = (categories) => {
     categories
   );
 };
+
 export const fetchCategoriesFailed = (error) => {
   return createAction(
     PRODUCT_CATALOG_ACTION_TYPES.FETCH_CATEGORIES_FAILED,
