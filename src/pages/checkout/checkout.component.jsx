@@ -13,7 +13,7 @@ const Checkout = () => {
   const cartTotal = useSelector(selectCartTotal)
   
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>Checkout
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <div className="checkout-container">
         <div className="checkout-header">
           <div className="header-block">
