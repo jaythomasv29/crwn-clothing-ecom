@@ -1,33 +1,74 @@
-# How to fork and clone
-One quick note about cloning this project. If you wish to make commits and push your own code, you'll need to fork the project first. Forking allows you to have your own copy of this repository by adding a duplicate version in your own profile!
+# CRWN Clothing Ecommerce App
 
-You can see the fork button in the top right corner of every GitHub project; click it and a copy of the project will be added to your GitHub profile under the same name as the original project.
+[View Live Demo Here](https://storied-quokka-79b623.netlify.app/)
+CRWN is a clothing line ecommerce store built with React and a variety of other technologies to create a robust, performant, and user-friendly application.
 
-<img width="612" alt="github fork" src="https://user-images.githubusercontent.com/10578605/157998981-4bfd1f83-825c-4664-b22d-b2c7d471dc70.png">
+# Overview
+### Home Page
+![home-page](./src/assets/Home.png)
 
-After forking the project, simply clone it the way you would from the new forked project in your own GitHub repository and you can commit and push to it freely!
+---
+### Product Category Preview Page
+![category-preview-page](./src/assets/ProductPreview.png)
 
-# After you fork and clone:
+---
+### Cart Component
+![cart-component](./src/assets/Cart.png)
 
-## Install dependencies
-In your terminal after you clone your project down, remember to run either `yarn` or `npm install` to build all the dependencies in the project.
+---
+### Google / Email Authentication Page
+![auth-page](./src/assets/Auth.png)
 
-## Set your firebase config
+---
+### Checkout Page
+![checkout-page](./src/assets//Checkout.png)
 
-Remember to replace the config variable in your firebase.utils.js with your own config object from the firebase dashboard! Navigate to the project settings gear icon > project settings and scroll down to the config code. Copy the object in the code and replace the variable in your cloned code.
+---
+## Features
 
-<img width="1261" alt="Screen Shot 2022-03-11 at 8 51 22 PM" src="https://user-images.githubusercontent.com/10578605/157999158-10e921cc-9ee5-46f6-a0c5-1ae5686f54f3.png">
+CRWN has the following features:
+- User authentication and account management
+- Full stack application built with Firebase
+- Responsive and mobile-friendly design
+- Online payment processing with the Stripe API
+<!-- - Integration with GraphQL and Apollo for efficient data fetching
+- Performance optimizations with React Suspense, React Lazy, and state normalization
+- Testing with Jest and snapshot testing -->
+- Routing with React Router
 
-# Branching strategy
+## Technologies Used
 
-After forking this repository and cloning it down, you will have access to all the lesson branches with code at different checkpoints throughout the course. If for some reason you need to work from the codebase at one of these lesson branch checkpoints, follow these steps:
+- React Basics
+- Creating Custom CSS Carousel / Sliders
+- React Router
+- Redux
+- Redux Saga
+- Asynchronous Redux
+- React Hooks
+- Context API
+- React Suspense + React Lazy
+- Firebase
+- Stripe API
+- Styled-Components
+- GraphQL
+- Apollo
+- PWAs
+- React Performance
+- React Design Patterns
+- Testing with Jest and Snapshot testing
+- React Best Practices
+- Persistance + Session Storage
+- State Normalization
 
-1. Checkout to the lesson-# (let's use lesson-15 as an example) branch
-```
-git checkout lesson-15
-```
-2. Branch off from lesson-15. This will create a new branch where the code of lesson-15 is the basis for your new branch. You can name your new branch whatever you want! Let's say we use my-main-branch as the name.
-```
-git checkout -b my-main-branch
-```
-3. Now you can just code on this branch, push code from this branch up to your forked repo etc. The main thing to remember is that you want to be on this branch for your own code, so remember what you named this branch!
+## Getting Started
+
+To get started with the CRWN app:
+
+1. Clone the repository to your local machine
+2. Install the necessary dependencies with `npm install`
+3. Start the development server with `npm start`
+4. View the app in your browser at `http://localhost:3000`
+
+## Conclusion
+
+CRWN is a comprehensive and feature-rich ecommerce application built with React and a variety of other technologies. By achieving the above learning objectives, the developer of this application has gained a deep understanding of React development and is well-equipped to lead future React projects.
