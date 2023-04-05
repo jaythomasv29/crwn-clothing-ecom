@@ -26,9 +26,7 @@ const PaymentForm = () => {
     // Make fetch request to backend to create payment intent w/ Stripe
     const response = await fetch("http://localhost:8888/.netlify/functions/create-payment-intent", {
       method: "post",
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      
       body: JSON.stringify({ amount: cartTotal * 100 })
     }).then(res => res.json())
 
