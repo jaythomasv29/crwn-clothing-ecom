@@ -160,8 +160,8 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   const userAuth = await signInWithEmailAndPassword(auth, email, password);
   console.log(userAuth.user.uid)
   const userInCollection = await getUserByUid(userAuth.user.uid)
-  console.log({userInCollection})
-  return userAuth;
+  console.log({...userAuth, user: {...userAuth.user, ...userInCollection } })
+  return {...userAuth, ...userInCollection};
 };
 
 const getUserByUid = async (uid) => {
@@ -169,7 +169,7 @@ const getUserByUid = async (uid) => {
     const userRef = doc(db, "users", uid);
     const userSnapshot = await getDoc(userRef);
     if (userSnapshot.exists()) {
-      return userDoc.data();
+      return userSnapshot.data();
     } else {
       console.log("No user document found for uid: ", uid);
     }
