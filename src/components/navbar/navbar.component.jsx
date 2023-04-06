@@ -21,6 +21,8 @@ const Navbar = () => {
    const onToggleCartVisible = () => {
     dispatch(toggleCartVisible())
    }
+
+   const isAdmin = (user) => user.accountType.includes("ADMIN")
   return (
     <>
       <NavigationContainer>

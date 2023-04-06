@@ -158,8 +158,25 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
   const userAuth = await signInWithEmailAndPassword(auth, email, password);
+  console.log(userAuth.user.uid)
+  const userInCollection = await getUserByUid(userAuth.user.uid)
+  console.log({userInCollection})
   return userAuth;
 };
+
+const getUserByUid = async (uid) => {
+  try {
+    const userRef = doc(db, "users", uid);
+    const userSnapshot = await getDoc(userRef);
+    if (userSnapshot.exists()) {
+      return userDoc.data();
+    } else {
+      console.log("No user document found for uid: ", uid);
+    }
+  } catch (err) {
+    console.error("Error retrieving user document: ", err)
+  }
+}
 
 export const signOutUser = async () => await signOut(auth);
 

@@ -19,6 +19,7 @@ import {
   fetchCategoriesAsync,
   setCategories,
 } from "./store/product-catalog/product-catalog.action";
+import Admin from "./pages/admin/admin.component";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -63,6 +64,10 @@ const App = () => {
         {
           path: "/checkout",
           element: <Checkout />,
+        },
+        {
+          path: "/admin",
+          element: <Admin />,
         },
       ],
     },

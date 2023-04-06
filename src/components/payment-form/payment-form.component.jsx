@@ -12,7 +12,7 @@ import { selectCurrentUser } from "../../store/user/user.selector"
 const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-  
+
   const [isProcessingPayment, setIsProcessingPayment] = useState(false)
   const cartTotal = useSelector(selectCartTotal)
   const currentUser = useSelector(selectCurrentUser)
@@ -45,11 +45,12 @@ const PaymentForm = () => {
       }
     });
 
-    
+
     if (paymentResult.error) {
       alert(paymentResult.error);
     } else {
       if (paymentResult.paymentIntent.status === "succeeded") {
+        console.log(paymentResult)
         alert("Payment Sucessful")
       }
     }
