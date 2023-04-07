@@ -1,4 +1,3 @@
-import React from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { BsArrowRight } from 'react-icons/bs'
 import { Carousel } from 'react-responsive-carousel'
@@ -30,7 +29,7 @@ const Home = () => {
         <Carousel {...carouselSettings} className="carousel-container">
           {
             categories?.map(category => (
-              <div key={category.route} className="slider-container">
+              <div key={category.imageUrl} className="slider-container">
                 <div className="slider-image-container">
                   <img className="slider-image" src={category.imageUrl} alt={category.title} />
                 </div>

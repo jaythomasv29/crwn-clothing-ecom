@@ -3,7 +3,11 @@
 
 import { createSelector } from "reselect";
 
-const selectProductCatalogReducer = (state) => state.products;
+import { ProductCatalogState } from "./product-catalog.reducer";
+import { CategoryMap } from "./product-catalog.types";
+import { RootState } from "../root-reducer";
+
+const selectProductCatalogReducer = (state: RootState): ProductCatalogState => state.products;
 
 // Memoized selectors
 export const selectCategories = createSelector(
@@ -13,12 +17,12 @@ export const selectCategories = createSelector(
 
 export const selectCatalogMap = createSelector(
   [selectProductCatalogReducer],
-  (productCatalogSlice) => {
+  (productCatalogSlice): CategoryMap => {
     return productCatalogSlice.categories.reduce((acc, categories) => {
       const { title, items } = categories;
       acc[title.toLowerCase()] = items;
       return acc;
-    }, {});
+    }, {} as CategoryMap);
   }
 );
 

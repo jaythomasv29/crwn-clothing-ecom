@@ -11,7 +11,7 @@ const CategoryMenu = ()=> {
   return (
 <div className="categories-container">
        {categories.map(category => (
-        <DirectoryItem key={category.route} category={category} />
+        <DirectoryItem key={category.imageUrl} category={category} />
       ))}
     </div>
   )
