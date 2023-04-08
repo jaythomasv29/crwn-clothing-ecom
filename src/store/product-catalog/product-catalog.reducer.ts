@@ -1,4 +1,4 @@
-import { Category, PRODUCT_CATALOG_ACTION_TYPES } from "./product-catalog.types";
+import { Category } from "./product-catalog.types";
 
 import { fetchCategoriesFailed, fetchCategoriesStart, fetchCategoriesSuccess } from "./product-catalog.action"
 import { AnyAction } from "redux";

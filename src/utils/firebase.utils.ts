@@ -27,7 +27,7 @@ import {
 } from "firebase/auth";
 
 // import { v4 as uuid } from "uuid";
-import { Category, CategoryItem } from "../store/product-catalog/product-catalog.types";
+import { Category } from "../store/product-catalog/product-catalog.types";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {

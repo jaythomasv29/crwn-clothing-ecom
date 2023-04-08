@@ -8,7 +8,6 @@ import Category from "./pages/category/category.component";
 import { useEffect } from "react";
 import {
   createUserDocumentFromAuth,
-  getProductsCategories,
   onAuthStateChangedListener,
 } from "./utils/firebase.utils";
 import { setCurrentUser } from "./store/user/user.action";
@@ -17,7 +16,6 @@ import { useDispatch } from "react-redux";
 import { AnimatePresence } from "framer-motion";
 import {
   fetchCategoriesAsync,
-  setCategories,
 } from "./store/product-catalog/product-catalog.action";
 import Admin from "./pages/admin/admin.component";
 
