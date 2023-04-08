@@ -48,7 +48,7 @@ export const fetchCategoriesAsync = (): ThunkAction<void, RootState, unknown, Ca
       return category
     })
     dispatch(fetchCategoriesSuccess(categories));
-  } catch (err: Error) {
-    dispatch(fetchCategoriesFailed(err));
+  } catch (err) {
+    dispatch(fetchCategoriesFailed(err as Error));
   }
 };
