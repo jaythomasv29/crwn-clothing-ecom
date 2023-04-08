@@ -4,7 +4,7 @@
 import { createSelector } from "reselect";
 
 import { ProductCatalogState } from "./product-catalog.reducer";
-import { CategoryMap } from "./product-catalog.types";
+import { CategoryItem, CategoryMap } from "./product-catalog.types";
 import { RootState } from "../root-reducer";
 
 const selectProductCatalogReducer = (state: RootState): ProductCatalogState => state.products;
@@ -16,11 +16,13 @@ export const selectCategories = createSelector(
 );
 
 export const selectCatalogMap = createSelector(
-  [selectProductCatalogReducer],
-  (productCatalogSlice): CategoryMap => {
-    return productCatalogSlice.categories.reduce((acc, categories) => {
-      const { title, items } = categories;
-      acc[title.toLowerCase()] = items;
+  [selectCategories],
+  (categories): CategoryMap => {
+    return categories.reduce((acc, category) => {
+      if (category.items) { // check if items array is defined
+        const { title, items} = category
+        acc[title.toLowerCase()] = items;
+      }
       return acc;
     }, {} as CategoryMap);
   }

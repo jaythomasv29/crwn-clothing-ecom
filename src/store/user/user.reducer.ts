@@ -1,5 +1,6 @@
 import { UserAction } from "./user.action";
-import { USER_ACTION_TYPES, User } from "./user.types";
+import { USER_ACTION_TYPES  } from "./user.types";
+import { User} from "firebase/auth"
 
 
 const USER_INITIAL_STATE: UserState = {
@@ -9,7 +10,7 @@ const USER_INITIAL_STATE: UserState = {
 
 
 export type UserState = {
-  currentUser: null | User;
+  currentUser: User | null;
 }
 
 
