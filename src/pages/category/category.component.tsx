@@ -7,11 +7,16 @@ import "./category.styles.scss"
 import { useSelector } from 'react-redux'
 import { selectCatalogMap, selectCategoriesLoading } from '../../store/product-catalog/product-catalog.selector'
 import Spinner from '../../components/spinner/spinner.component'
+
+type CategoryRouteParams = {
+  category: string;
+}
+
 const Category = () => {
-  const { category } = useParams()
+  const { category } = useParams<keyof CategoryRouteParams>() as CategoryRouteParams
   const isCategoriesLoading = useSelector(selectCategoriesLoading)
   const catalogMap = useSelector(selectCatalogMap)
-  const [categoryProducts, setCategoryProducts] = useState([])
+  const [categoryProducts, setCategoryProducts] = useState(catalogMap[category])
 
 
   useEffect(() => {

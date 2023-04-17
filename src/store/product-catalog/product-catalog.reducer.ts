@@ -25,7 +25,7 @@ export const productCatalogReducer = (state = CATEGORIES_INITIAL_STATE, action: 
   }
 
   if (fetchCategoriesFailed.match(action)) {
-    return { ...state, isLoading: false, error: action.payload}
+    return { ...state, isLoading: false, error: action.payload }
   }
 
   return state;

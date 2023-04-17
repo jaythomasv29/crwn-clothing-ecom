@@ -1,13 +1,10 @@
-import React, { useState } from "react"
+import { useState, FormEvent } from "react"
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import { BUTTON_TYPE_CLASSES } from "../button/button.component"
 import { PaymentFormContainer, FormContainer, PaymentButton } from "./payment-form.styles"
 import { useSelector } from "react-redux"
 import { selectCartTotal } from "../../store/cart/cart.selector"
 import { selectCurrentUser } from "../../store/user/user.selector"
-
-
-
 
 const PaymentForm = () => {
   const stripe = useStripe();
@@ -17,7 +14,7 @@ const PaymentForm = () => {
   const cartTotal = useSelector(selectCartTotal)
   const currentUser = useSelector(selectCurrentUser)
 
-  const paymentHandler = async (e) => {
+  const paymentHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!stripe || !elements) return
@@ -36,11 +33,15 @@ const PaymentForm = () => {
     const { paymentIntent: { client_secret } } = response
     console.log(client_secret)
 
+    const cardDetails = elements.getElement(CardElement)
+
+    if (cardDetails === null) return;
+
     const paymentResult = await stripe.confirmCardPayment(client_secret, {
       payment_method: {
-        card: elements.getElement(CardElement),
+        card: cardDetails,
         billing_details: {
-          name: currentUser ? currentUser.displayName : "Guest",
+          name: currentUser ? currentUser.displayName || "Guest" : "Guest",
         }
       }
     });

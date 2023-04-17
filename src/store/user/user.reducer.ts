@@ -1,6 +1,5 @@
-import { UserAction } from "./user.action";
-import { USER_ACTION_TYPES  } from "./user.types";
-import { User} from "firebase/auth"
+import { UserAction, setCurrentUser } from "./user.action";
+import { User } from "firebase/auth"
 
 
 const USER_INITIAL_STATE: UserState = {
@@ -14,12 +13,9 @@ export type UserState = {
 }
 
 
-export const userReducer = (state = USER_INITIAL_STATE, action = {} as UserAction) => {
-
-  switch (action.type) {
-    case USER_ACTION_TYPES.SET_CURRENT_USER:
-      return { ...state, currentUser: action.payload }
-    default:
-      return state;
+export const userReducer = (state = USER_INITIAL_STATE, action: UserAction) => {
+  if (setCurrentUser.match(action)) {
+    return { ...state, currentUser: action.payload }
   }
+  return state;
 }

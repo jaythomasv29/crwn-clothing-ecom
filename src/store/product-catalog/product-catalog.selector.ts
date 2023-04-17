@@ -4,7 +4,7 @@
 import { createSelector } from "reselect";
 
 import { ProductCatalogState } from "./product-catalog.reducer";
-import { CategoryItem, CategoryMap } from "./product-catalog.types";
+import { CategoryMap } from "./product-catalog.types";
 import { RootState } from "../root-reducer";
 
 const selectProductCatalogReducer = (state: RootState): ProductCatalogState => state.products;

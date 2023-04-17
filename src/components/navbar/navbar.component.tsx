@@ -7,7 +7,7 @@ import CartIcon from '../cart-icon/cart-icon.component'
 import { useDispatch, useSelector } from 'react-redux'
 
 // import "./navbar.styles.js"
-import { LogoContainer, NavigationContainer, NavLink, NavLinksContainer, AppContainer, BrandName } from './navbar.styles.js'
+import { LogoContainer, NavigationContainer, NavLink, NavLinksContainer, AppContainer, BrandName } from './navbar.styles'
 import { selectCurrentUser } from '../../store/user/user.selector'
 import { selectCartVisible } from '../../store/cart/cart.selector'
 import { toggleCartVisible } from '../../store/cart/cart.action'
@@ -37,7 +37,7 @@ const Navbar = () => {
           {
             currentUser ?
 
-              <NavLink as="span" onClick={signOutUser} to="/auth">SIGN OUT</NavLink>
+              <NavLink onClick={signOutUser} to="/auth">SIGN OUT</NavLink>
               :
               <NavLink to="/auth">SIGN IN</NavLink>
           }

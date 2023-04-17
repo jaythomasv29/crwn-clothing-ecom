@@ -89,9 +89,6 @@ export const addCollectionAndDocuments = async <T extends ObjectToAdd>(
  *  Return all categories with their respective items from firebase db
  *
  * */
-
-
-
 export const getProductsCategories = async (): Promise<Category[]> => {
   const collectionRef = collection(db, "categories");
   const q = query(collectionRef);

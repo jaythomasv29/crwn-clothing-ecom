@@ -3,7 +3,7 @@
 // import { CartContext } from "../../contexts/cart.context"
 // import "./cart-icon.styles.scss"
 
-import { CartIconContainer, ShoppingIcon, ItemTotalCount } from "./cart-icon.js"
+import { CartIconContainer, ShoppingIcon, ItemTotalCount } from "./cart-icon"
 import { useSelector } from "react-redux"
 import { selectCartCount } from "../../store/cart/cart.selector"
 const CartIcon = () => {
