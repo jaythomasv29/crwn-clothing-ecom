@@ -9,21 +9,21 @@ import { useEffect } from "react";
 import {
   createUserDocumentFromAuth,
   onAuthStateChangedListener,
+  getUserByUid
 } from "./utils/firebase.utils";
 import { setCurrentUser } from "./store/user/user.action";
 import { useDispatch } from "react-redux";
 
 import { AnimatePresence } from "framer-motion";
-import {
-  fetchCategoriesAsync,
-} from "./store/product-catalog/product-catalog.action";
+import { fetchCategoriesAsync } from "./store/product-catalog/product-catalog.action";
 import Admin from "./pages/admin/admin.component";
+import AdminCategory from "./pages/admin-category/admin-category.component";
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCategoriesAsync())
+    dispatch(fetchCategoriesAsync());
   });
 
   useEffect(() => {
@@ -32,7 +32,10 @@ const App = () => {
         createUserDocumentFromAuth(user);
       }
       // Dispatch - dispatches actions to root reducer
-      dispatch(setCurrentUser(user));
+      console.log("user user", user);
+      getUserByUid(user.uid).then((userInCollection) => {
+        dispatch(setCurrentUser({ ...user, ...userInCollection }));
+      });
     });
 
     return unsubscribe;
@@ -66,6 +69,13 @@ const App = () => {
         {
           path: "/admin",
           element: <Admin />,
+          children: [
+            {
+              path: "/admin/:category",
+              element: <AdminCategory />
+            }
+          ]
+          ,
         },
       ],
     },

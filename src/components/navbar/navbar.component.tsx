@@ -11,18 +11,28 @@ import { LogoContainer, NavigationContainer, NavLink, NavLinksContainer, AppCont
 import { selectCurrentUser } from '../../store/user/user.selector'
 import { selectCartVisible } from '../../store/cart/cart.selector'
 import { toggleCartVisible } from '../../store/cart/cart.action'
+import { ACCOUNT_TYPES, AdditionalUser } from '../../store/user/user.types'
+
 
 const Navbar = () => {
   const dispatch = useDispatch()
 
   const currentUser = useSelector(selectCurrentUser);
   const isCartVisible = useSelector(selectCartVisible)
-  
-   const onToggleCartVisible = () => {
-    dispatch(toggleCartVisible())
-   }
 
-  //  const isAdmin = (user) => user.accountType.includes("ADMIN")
+  const onToggleCartVisible = () => {
+    dispatch(toggleCartVisible())
+  }
+
+  const isAdmin = (user: AdditionalUser): boolean => {
+    console.log(user)
+    if (user.accountType) {
+      console.log(user.accountType)
+      return user.accountType.includes("ADMIN")
+    }
+    return false;
+  }
+  if (currentUser) console.log(isAdmin(currentUser))
   return (
     <>
       <NavigationContainer>
@@ -35,12 +45,17 @@ const Navbar = () => {
           <NavLink to="/">HOME</NavLink>
           <NavLink to="/shop">SHOP</NavLink>
           {
+            currentUser != null && isAdmin(currentUser) && <NavLink to="/admin">ADMIN</NavLink>
+          }
+          {
             currentUser ?
 
               <NavLink onClick={signOutUser} to="/auth">SIGN OUT</NavLink>
               :
               <NavLink to="/auth">SIGN IN</NavLink>
           }
+
+
           <div onClick={onToggleCartVisible}>
             <CartIcon />
           </div>

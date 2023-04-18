@@ -127,16 +127,18 @@ export const createUserDocumentFromAuth = async (
   if (!userAuth) return;
   const userDocRef = doc(db, "users", userAuth.uid); // gets the actual document inside the collection
   const userSnapshot = await getDoc(userDocRef); // gets the data inside the document, aka the "snapshot"
-
+  console.log(userSnapshot)
 
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
+    const accountType = "USER"
     try {
       await setDoc(userDocRef, {
         displayName,
         email,
         createdAt,
+        accountType,
         ...additionalInformation,
       });
     } catch (e) {
@@ -157,11 +159,11 @@ export const signInAuthUserWithEmailAndPassword = async (email: string, password
   const userAuth = await signInWithEmailAndPassword(auth, email, password);
   console.log(userAuth.user.uid)
   const userInCollection = await getUserByUid(userAuth.user.uid)
-  console.log({ ...userAuth, user: { ...userAuth.user, ...userInCollection } })
+  console.log({ ...userAuth, ...userInCollection })
   return { ...userAuth, ...userInCollection };
 };
 
-const getUserByUid = async (uid: string) => {
+export const getUserByUid = async (uid: string) => {
   try {
     const userRef = doc(db, "users", uid);
     const userSnapshot = await getDoc(userRef);
